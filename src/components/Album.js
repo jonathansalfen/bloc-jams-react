@@ -44,6 +44,15 @@ class Album extends Component {
     }
   }
 
+  handleSongHover() {
+    // this.state.firstChild.innerHTML = '<span className="ion-md-play"></span>';
+    console.log(this);
+  }
+
+  handleSongUnHover() {
+
+  }
+
   render() {
     return (
       <section className="album">
@@ -64,8 +73,17 @@ class Album extends Component {
           <tbody>
             {
               this.state.album.songs.map( (song, index) =>
-              <tr className="song" key={index} onClick={() => this.handleSongClick(song)} >
-                <th>{index+1}</th>
+              <tr className="song"
+                  key={index}
+                  onClick={() => this.handleSongClick(song)}
+                  onMouseEnter={() => this.handleSongHover(song)}
+                  // onMouseLeave={() => this.handleSongUnHover(song)}
+              >
+                <th>{this.state.songNumber}
+                  <div>{index+1}</div>
+                  <div><span className="ion-md-play"></span></div>
+                  <div><span className="ion-md-pause"></span></div>
+                </th>
                 <th>{song.title}</th>
                 <th>{song.duration + " s"}</th>
               </tr>
@@ -73,6 +91,8 @@ class Album extends Component {
             }
           </tbody>
         </table>
+        <span className="ion-md-play"></span>
+        <span className="ion-md-pause"></span>
       </section>
     );
   }
