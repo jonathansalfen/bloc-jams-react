@@ -13,6 +13,7 @@ class Album extends Component {
       album: album,
       currentSong: album.songs[0],
       isPlaying: false,
+      hover: false
     };
 
     this.audioElement = document.createElement('audio');
@@ -44,13 +45,12 @@ class Album extends Component {
     }
   }
 
-  handleSongHover() {
-    // this.state.firstChild.innerHTML = '<span className="ion-md-play"></span>';
-    console.log(this);
+  hoverOn() {
+    this.setState({ hover: true });
   }
 
-  handleSongUnHover() {
-
+  hoverOff() {
+    this.setState({ hover: false });
   }
 
   render() {
@@ -76,16 +76,20 @@ class Album extends Component {
               <tr className="song"
                   key={index}
                   onClick={() => this.handleSongClick(song)}
-                  onMouseEnter={() => this.handleSongHover(song)}
-                  // onMouseLeave={() => this.handleSongUnHover(song)}
+                  onMouseEnter={this.hoverOn}
+                  onMouseLeave={this.hoverOff}
               >
-                <th>{this.state.songNumber}
-                  <div>{index+1}</div>
-                  <div><span className="ion-md-play"></span></div>
-                  <div><span className="ion-md-pause"></span></div>
-                </th>
-                <th>{song.title}</th>
-                <th>{song.duration + " s"}</th>
+                <td>{this.state.songNumber}
+                  {this.state.hover ?
+                    <div key={1+index+"songPlay"}><span className="ion-md-play"></span></div>
+                    :
+                    <div key={1+index+"songNumber"}>{index+1}</div>
+                  }
+
+                  {/* <div key={1+index+"songPause"}><span className="ion-md-pause"></span></div> */}
+                </td>
+                <td>{song.title}</td>
+                <td>{song.duration + " s"}</td>
               </tr>
               )
             }
