@@ -13,7 +13,7 @@ class Album extends Component {
       album: album,
       currentSong: album.songs[0],
       isPlaying: false,
-      hover: {}
+      hover: false
     };
 
     this.audioElement = document.createElement('audio');
@@ -53,13 +53,6 @@ class Album extends Component {
     this.setState({ hover: false });
   }
 
-  createHoverObject(song, index) {
-    // let hover = Object.assign({}, this.state.hoover);
-    // hover[1+index+"song"] = false;
-    // this.setState({hover});
-  }
-
-
   render() {
     return (
       <section className="album">
@@ -86,7 +79,6 @@ class Album extends Component {
                   onMouseEnter={this.hoverOn.bind(this)}
                   onMouseLeave={this.hoverOff.bind(this)}
               >
-                {this.createHoverObject(song, index)}
                 <td>{this.state.songNumber}
                   {this.state.hover ?
                     <div><span className="ion-md-play"></span></div>
@@ -103,8 +95,6 @@ class Album extends Component {
             }
           </tbody>
         </table>
-        <span className="ion-md-play"></span>
-        <span className="ion-md-pause"></span>
       </section>
     );
   }
