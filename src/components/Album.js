@@ -11,9 +11,8 @@ class Album extends Component {
 
     this.state = {
       album: album,
-      currentSong: album.songs[0],
+      currentSong: "",
       isPlaying: false,
-      isHovered: ""
     };
 
     this.audioElement = document.createElement('audio');
@@ -45,16 +44,19 @@ class Album extends Component {
     }
   }
 
-  currentHover(song, index) {
-    const isHovered = this.state.isHovered = 1+index+"song";
-    const element = (
-      <div><span className="ion-md-play"></span></div>
-    );
-    ReactDOM.render(element, document.getElementById(isHovered));
-  }
-
-  hoverOff() {
-    const isHovered = this.state.isHovered = "";
+  handleIconToggle(song, index) {
+    const isSameSong = this.state.currentSong === song;
+    if (this.state.isMouseInside === index + 1 && !this.state.isPlaying && !isSameSong){
+      return <span className="ion-md-play"></span>
+    } else if (this.state.isMouseInside=== index + 1 && this.state.isPlaying) {
+      return <span className="ion-md-pause"></span>
+    } else if (isSameSong && this.state.isPlaying){
+      return <span className="ion-md-pause"></span>
+    } else if (isSameSong && !this.state.isPlaying){
+      return <span className="ion-md-play"></span>
+    } else {
+      return index + 1;
+    }
   }
 
   render() {
@@ -81,13 +83,11 @@ class Album extends Component {
                   key={1+index+"song"}
                   id={1+index+"song"}
                   onClick={() => this.handleSongClick(song)}
-                  onMouseEnter={() => this.currentHover(song, index)}
-                  onMouseLeave={() => this.hoverOff()}
+                  onMouseEnter={() => this.setState({ isMouseInside: index + 1 })}
+                  onMouseLeave={() => this.setState({ isMouseInside: false })}
               >
-                <td>
-                  <div>{index+1}</div>
-                  {/* <div><span className="ion-md-play"></span></div> */}
-                  {/* <div key={1+index+"songPause"}><span className="ion-md-pause"></span></div> */}
+                <td className="song-number">
+                  {this.handleIconToggle(song, index)}
                 </td>
                 <td>{song.title}</td>
                 <td>{song.duration + " s"}</td>
