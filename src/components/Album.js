@@ -13,6 +13,7 @@ class Album extends Component {
       album: album,
       currentSong: "",
       isPlaying: false,
+      isMouseInside: false,
     };
 
     this.audioElement = document.createElement('audio');
@@ -48,10 +49,12 @@ class Album extends Component {
     const isSameSong = this.state.currentSong === song;
     if (this.state.isMouseInside === index + 1 && !this.state.isPlaying && !isSameSong){
       return <span className="ion-md-play"></span>
-    } else if (this.state.isMouseInside=== index + 1 && this.state.isPlaying) {
+    } else if (this.state.isMouseInside === index + 1 && this.state.isPlaying && isSameSong) {
       return <span className="ion-md-pause"></span>
     } else if (isSameSong && this.state.isPlaying){
       return <span className="ion-md-pause"></span>
+    } else if (this.state.isMouseInside === index + 1 && this.state.isPlaying && !isSameSong) {
+      return <span className="ion-md-play"></span>
     } else if (isSameSong && !this.state.isPlaying){
       return <span className="ion-md-play"></span>
     } else {
