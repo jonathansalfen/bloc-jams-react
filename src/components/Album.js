@@ -163,7 +163,7 @@ class Album extends Component {
                   {this.handleIconToggle(song, index)}
                 </td>
                 <td>{song.title}</td>
-                <td>{song.duration + " s"}</td>
+                <td>{this.formatTime(song.duration)}</td>
               </tr>
               )
             }
