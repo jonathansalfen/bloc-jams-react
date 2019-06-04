@@ -134,54 +134,80 @@ class Album extends Component {
 
   render() {
     return (
-      <section className="album">
-        <section is="album-info">
-          <img id="album-cover-art" src={this.state.album.albumCover} alt={this.state.album.title} />
-          <div className="album-details">
-            <h1 id="album-title">{this.state.album.title}</h1>
-            <h2 className="artist">{this.state.album.artist}</h2>
-            <div id="release-info">{this.state.album.releaseInfo}</div>
+      <section className="album container-fluid">
+        <div className="row justify-content-sm-center">
+          <div className="col">
+            <div className="container">
+              <div className="row">
+                <div className="col">
+                  <section id="album-image">
+                    <img id="album-cover-art" src={this.state.album.albumCover} alt={this.state.album.title} />
+                  </section>
+                </div>
+                <div className="col">
+                  <section id="album-info">
+                    <div className="album-details">
+                      <h1 id="album-title">{this.state.album.title}</h1>
+                      <h2 className="artist">{this.state.album.artist}</h2>
+                      <div id="release-info">{this.state.album.releaseInfo}</div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
           </div>
-        </section>
-        <table id="song-list">
-          <colgroup>
-            <col id="song-number-column" />
-            <col id="song-title-column" />
-            <col id="song-duration-column" />
-          </colgroup>
-          <tbody>
-            {
-              this.state.album.songs.map( (song, index) =>
-              <tr className="song"
-                  key={1+index+"song"}
-                  id={1+index+"song"}
-                  onClick={() => this.handleSongClick(song)}
-                  onMouseEnter={() => this.setState({ isMouseInside: index + 1 })}
-                  onMouseLeave={() => this.setState({ isMouseInside: false })}
-              >
-                <td className="song-number">
-                  {this.handleIconToggle(song, index)}
-                </td>
-                <td>{song.title}</td>
-                <td>{this.formatTime(song.duration)}</td>
-              </tr>
-              )
-            }
-          </tbody>
-        </table>
-        <PlayerBar
-          isPlaying={this.state.isPlaying}
-          currentSong={this.state.currentSong}
-          currentTime={this.audioElement.currentTime}
-          currentVolume={this.audioElement.currentVolume}
-          duration={this.audioElement.duration}
-          formatTime={(e) => this.formatTime(e)}
-          handleSongClick={() => this.handleSongClick(this.state.currentSong)}
-          handlePrevClick={() => this.handlePrevClick()}
-          handleNextClick={() => this.handleNextClick()}
-          handleTimeChange={(e) => this.handleTimeChange(e)}
-          handleVolumeChange={(e) => this.handleVolumeChange(e)}
-        />
+          <div className="col">
+            <div className="container-fluid">
+              <div className="row">
+                <div className="col">
+                  <table id="song-list">
+                    <colgroup>
+                      <col id="song-number-column" />
+                      <col id="song-title-column" />
+                      <col id="song-duration-column" />
+                    </colgroup>
+                    <tbody>
+                      {
+                        this.state.album.songs.map( (song, index) =>
+                        <tr className="song"
+                            key={1+index+"song"}
+                            id={1+index+"song"}
+                            onClick={() => this.handleSongClick(song)}
+                            onMouseEnter={() => this.setState({ isMouseInside: index + 1 })}
+                            onMouseLeave={() => this.setState({ isMouseInside: false })}
+                        >
+                          <td className="song-number">
+                            {this.handleIconToggle(song, index)}
+                          </td>
+                          <td className="song-title">{song.title}</td>
+                          <td className="song-duration">{this.formatTime(song.duration)}</td>
+                        </tr>
+                        )
+                      }
+                    </tbody>
+                  </table>
+                </div>
+                <div className="col">
+                  <PlayerBar
+                    className="player-bar"
+                    isPlaying={this.state.isPlaying}
+                    currentSong={this.state.currentSong}
+                    currentTime={this.audioElement.currentTime}
+                    currentVolume={this.audioElement.currentVolume}
+                    duration={this.audioElement.duration}
+                    formatTime={(e) => this.formatTime(e)}
+                    handleSongClick={() => this.handleSongClick(this.state.currentSong)}
+                    handlePrevClick={() => this.handlePrevClick()}
+                    handleNextClick={() => this.handleNextClick()}
+                    handleTimeChange={(e) => this.handleTimeChange(e)}
+                    handleVolumeChange={(e) => this.handleVolumeChange(e)}
+                  />
+                </div>
+              </div>
+            </div>
+
+        </div>
+      </div>
       </section>
     );
   }

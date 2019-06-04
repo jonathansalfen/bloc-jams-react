@@ -1,9 +1,58 @@
+/*
+File Structure:
+
+App.js
+  ↳Album.js
+    ↳PlayerBar.js
+  ↳Landing.js
+  ↳Library.js
+
+*/
+
+/********************* App.js *********************/
+
+a {
+  color: #422D98;
+  font-size: 20px;
+}
+
+a:hover {
+  color: #CD5A3E;
+}
+
 body {
   text-align: center;
-  background: #EEF0F2;
+  background: #FCECCF;
   color: #011638;
   font-family: 'Patua One', ariel;
+}
 
+h1 {
+  color: #CD5A3E;
+}
+
+h2 {
+  color: #422D98;
+}
+
+header {
+  background-image: linear-gradient(to right, #FCD180, #FCD180, #CD5A3E);
+  padding-bottom: 6em;
+  /* border-bottom: solid #CD5A3E 5px; */
+}
+
+header h1 {
+  font-family: 'Pacifico', ariel;
+  font-size: 3em;
+  text-shadow:
+    -1px -1px 1px #422D98,
+    1px -1px 1px #422D98,
+    -1px 1px 1px #422D98,
+    1px 1px 1px #422D98;
+}
+
+.App:link {
+  color: #422D98;
 }
 
 .App-logo {
@@ -27,11 +76,174 @@ body {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#header-links {
+  float: right;
+  padding: 3em 2em 1em 0em;
+}
+
+#header-links .header-link {
+  padding: 0em 0em 0em 1em;
+  color: #FCECCF;
+}
+
+#header-app-name {
+  float: left;
+  padding: 1em 0em 0em 2em;
+}
+
+/********************* Album.js *********************/
+
+.album {
+  padding: 3em;
+}
+
+.album #album-image {
+  margin: 1em;
+}
+
+.album #album-cover-art {
+  border: solid #FCD180 2px;
+  padding: .5em;
+  min-width: 15em;
+  max-width: 20em;
+  width: 100%;
+}
+
+.album #album-info {
+  text-align: center;
+  /* margin: 1em; */
+}
+
+.album .album-details {
+  margin: 1em 0 1em 0;
+  text-align: center;
+
+}
+
+td {
+  border-bottom: 1px solid #011638;
+  /* background-color: #FCD180; */
+  padding: 0 1em 0 1em;
+}
+
+.album #song-list {
+  border-collapse: collapse;
+  border-spacing: 2em 0;
+  text-align: left;
+  position: relative;
+  margin: auto;
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
+
+.album .player-bar {
+  margin: 1em;
+}
+
+#song-list .song-number {
+  color: #CD5A3E;
+}
+
+#song-list .song-title {
+
+}
+
+#song-list .song-duration {
+  color: #422D98;
+}
+
+/********************* Landing.js *********************/
+
+.landing .hero-title {
+  margin: 1em;
+  font-family: 'Pacifico', ariel;
+  font-size: 4em;
+}
+
+.landing .point {
+  background-color: #FCD180;
+  border: solid #CD5A3E;
+  margin: auto;
+  margin-top: 3em;
+  margin-bottom: 3em;
+  padding: 1em;
+  width: 30em;
+}
+
+/* ******************** Library.js ******************** */
+
+.library .album-polaroid {
+  border: solid #FCD180;
+  max-width: 15em;
+  min-height: 18em;
+  padding: 8%;
+}
+
+.library .library-image {
+  width: 100%;
+  /* min-width: 8em; */
+}
+
+.library .library-album-description {
+  text-align: left;
+  margin: 1em 0 0 0;
+}
+
+.library .library-title {
+  color: #011638;
+}
+
+.library .library-songs {
+  font-size: .7em;
+}
+
+.library .col-sm-auto {
+  margin-top: 1em;
+}
+
+.library .row {
+  margin: 2em;
+}
+
+/********************* PlayerBar.js *********************/
+
+.player-bar button {
+  background-color: #FCD180;
+  color: #422D98;
+  border: 2px solid #FCD180;
+  margin: 0 .5em 0 .5em;
+  min-width: 3em;
+}
+
+.player-bar .current-time {
+  color: #422D98;
+}
+
+.player-bar .total-time {
+  color: #011638;
+}
+
+.player-bar input {
+  -webkit-appearance: none;
+  background-color: #011638;
+  height: .1em;
+  min-width: 15em;
+  width: 100%;
+}
+
+.player-bar .ion-md-volume-low {
+  float: left;
+}
+
+.player-bar .ion-md-volume-high {
+  float: right;
+}
+
+.player-bar .player-time-readout {
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  margin: 2em 0 -1em 0;
+  text-align: center;
+  width: 100%;
 }
