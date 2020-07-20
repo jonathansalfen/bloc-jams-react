@@ -1,3 +1,29 @@
+# Bloc Jams React
+
+#### An app to listen to your favorite music, January, 2019
+
+#### By Jonathan Salfen
+
+## Description
+
+Bloc Jams React is a Spotify clone/music app to listen to your favorite songs.
+
+Find this project at https://github.com/jonathansalfen/bloc-jams-react
+
+## Technologies Used
+
+This project uses:
+- React
+- Javascript
+- HTML/CSS
+
+### License
+
+*Use of this program is free and open to the public*
+
+
+# More Information
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
