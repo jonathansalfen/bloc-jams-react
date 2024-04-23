@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://jonathansalfen.github.io/bloc-jams-react/",
   "dependencies": {
-    "gh-pages": "^2.0.1",
+    "gh-pages": "^5.0.0",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-router-dom": "^5.0.0",
